@@ -16,12 +16,15 @@ export default class Compose extends Component {
     this.createPost = this.createPost.bind( this );
   }
 
-  updateText( text ) {
     this.setState({ text });
   }
 
   createPost() {
-
+      const { text } = this.state;
+      const { createPostFn } = this.props;
+    
+      createPostFn( text );
+      this.setState({ text: '' });
   }
 
   render() {
@@ -38,9 +41,9 @@ export default class Compose extends Component {
 
           {/* This is where you type the message for your new post */}
           <input className="Compose__input"
-                 placeholder="What's on your mind?"
-                 value={ text }
-                 onChange={ ( e ) => this.updateText( e.target.value ) } />
+                placeholder="What's on your mind?"
+                value={ text }
+                onChange={ ( e ) => this.updateText( e.target.value ) } />
 
         </div>
 
@@ -50,4 +53,3 @@ export default class Compose extends Component {
       </section>
     )
   }
-}
