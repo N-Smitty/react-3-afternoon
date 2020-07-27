@@ -16,15 +16,16 @@ export default class Compose extends Component {
     this.createPost = this.createPost.bind( this );
   }
 
+  updateText( text ) {
     this.setState({ text });
   }
 
   createPost() {
-      const { text } = this.state;
-      const { createPostFn } = this.props;
-    
-      createPostFn( text );
-      this.setState({ text: '' });
+    const { text } = this.state;
+    const { createPostFn } = this.props;
+  
+    createPostFn( text );
+    this.setState({ text: '' });
   }
 
   render() {
@@ -53,3 +54,4 @@ export default class Compose extends Component {
       </section>
     )
   }
+}
